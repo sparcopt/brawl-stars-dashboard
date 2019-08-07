@@ -22,6 +22,7 @@ namespace Presentation.Web.Controllers
         {
             var player = await GetPlayerAsync("9QQJJGQYQ");
             var club = await GetClubAsync("PJP8LOJV");
+            var battlelog = await GetPlayerBattlelog("9QQJJGQYQ");
 
             var model = new HomeModel
             {
@@ -52,6 +53,12 @@ namespace Presentation.Web.Controllers
         {
             var response = await client.GetAsync($"https://brawlapi.cf/v1/club?tag={clubTag}");
             return await response.Content.ReadAsAsync<Club>();
+        }
+
+        private async Task<Battlelog> GetPlayerBattlelog(string playerTag)
+        {
+            var response = await client.GetAsync($"https://brawlapi.cf/v1/player/battlelog?tag={playerTag}");
+            return await response.Content.ReadAsAsync<Battlelog>();
         }
     }
 }
