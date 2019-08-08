@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Presentation.Web.Models
@@ -7,15 +8,23 @@ namespace Presentation.Web.Models
     {
         public List<Item> Items { get; set; }
         public Paging Paging { get; set; }           
-        public enum Mode { GemGrab };
-        public enum Result { Defeat, Victory };
+        public enum Mode { BrawlBall, Bounty, DuoShowdown, GemGrab, Heist };
+        public enum Result { Defeat, Draw, Victory };
         public enum TypeEnum { Ranked };
         public enum Map
         {
+            [EnumMember(Value = "Beach Ball")]
+            BeachBall,
+            [EnumMember(Value = "Feast or Famine")]
+            FeastOrFamine,
             [EnumMember(Value = "Hard Rock Mine")]
             HardRockMine,
             [EnumMember(Value = "Minecart Madness")]
-            MinecartMadness
+            MinecartMadness,
+            [EnumMember(Value = "Sandy Gems")]
+            SandyGems,
+            [EnumMember(Value = "Snake Prairie")]
+            SnakePrairie
         };
     }
 
@@ -30,7 +39,7 @@ namespace Presentation.Web.Models
 
     public class Item
     {
-        public string BattleTime { get; set; }
+        public DateTime BattleTime { get; set; }
         public Event Event { get; set; }
         public Battle Battle { get; set; }
     }

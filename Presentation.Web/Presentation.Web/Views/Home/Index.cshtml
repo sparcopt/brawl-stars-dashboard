@@ -11,22 +11,56 @@
         <h2>@Model.Club.Trophies</h2>
     </div>
     <div class="row justify-content-center">
-        <table class="table">
-            <tbody>
-                @foreach (var member in Model.Club.Members)
-                {
-                    <tr>
-                        <td><img src="@member.AvatarUrl" alt="..." width="50px" height="50px"></td>
-                        <td>@member.Name</td>
-                        <td>
-                            <div>
-                                <img src="~/img/trophy.png" alt="..." width="50px" height="50px">
-                                @member.Trophies
-                            </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="col-sm">
+            <table class="table">
+                <tbody>
+                    @foreach (var member in Model.Club.Members)
+                    {
+                        <tr>
+                            <td><img src="@member.AvatarUrl" alt="..." width="50px" height="50px"></td>
+                            <td>@member.Name</td>
+                            <td>
+                                <div>
+                                    <img src="~/img/trophy.png" alt="..." width="50px" height="50px">
+                                    @member.Trophies
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm">
+            <table class="table">
+                <tbody>
+                    @foreach (var item in Model.BattleLogItems)
+                    {
+                        <tr>
+                            <td>
+                                <div class="row justify-content-center">
+                                    @item.Battle.Result @item.BattleTime <img src="~/img/trophy.png" alt="..." width="25px" height="25px"> @item.Battle.TrophyChange
+                                </div>
+                                <div class="row">
+                                    @foreach (var team in item.Battle.Teams)
+                                    {
+                                        @foreach (var player in team)
+                                        {
+                                            <div class="col-sm">
+                                                <div class="row no-gutters">
+                                                    <img src="@Model.Club.BadgeUrl" alt="..." width="50px" height="50px">
+                                                </div>
+                                                <div class="row no-gutters" style="font-size:11px">
+                                                    @player.Name
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

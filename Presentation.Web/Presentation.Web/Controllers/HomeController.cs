@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Presentation.Web.Models;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -22,11 +25,22 @@ namespace Presentation.Web.Controllers
         {
             var player = await GetPlayerAsync("9QQJJGQYQ");
             var club = await GetClubAsync("PJP8LOJV");
-            var battlelog = await GetPlayerBattlelog("9QQJJGQYQ");
+            //var battlelog = await GetPlayerBattlelog("9QQJJGQYQ");
+
+            var playerTags = new string[] { "9QQJJGQYQ", "9YLQ02RY2", "922V0UP9R", "9982GULG2", "P8C90QC99", "P8VJC8UUR" };
+
+            var battles = new List<Item>();
+
+            foreach(var tag in playerTags)
+            {
+                var playerBattlelog = await GetPlayerBattlelog(tag);
+                battles.AddRange(playerBattlelog.Items);
+            }
 
             var model = new HomeModel
             {
-                Club = club
+                Club = club,
+                BattleLogItems = battles.OrderByDescending(b => b.BattleTime).Take(4)
             };
 
             return View(model);
@@ -58,7 +72,15 @@ namespace Presentation.Web.Controllers
         private async Task<Battlelog> GetPlayerBattlelog(string playerTag)
         {
             var response = await client.GetAsync($"https://brawlapi.cf/v1/player/battlelog?tag={playerTag}");
-            return await response.Content.ReadAsAsync<Battlelog>();
+            var content = await response.Content.ReadAsStringAsync();
+
+            var set = new JsonSerializerSettings // check why I can't set this at start
+            {
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+                DateFormatString = "yyyyMMddTHHmmss.fffZ",
+            };
+
+            return JsonConvert.DeserializeObject<Battlelog>(content, set);
         }
     }
 }
