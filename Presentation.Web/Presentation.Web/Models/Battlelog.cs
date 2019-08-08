@@ -17,12 +17,18 @@ namespace Presentation.Web.Models
             BeachBall,
             [EnumMember(Value = "Feast or Famine")]
             FeastOrFamine,
+            [EnumMember(Value = "Four Squared")]
+            FourSquared,
             [EnumMember(Value = "Hard Rock Mine")]
             HardRockMine,
             [EnumMember(Value = "Minecart Madness")]
             MinecartMadness,
+            [EnumMember(Value = "Thousand Lakes")]
+            ThousandLakes,
             [EnumMember(Value = "Sandy Gems")]
             SandyGems,
+            [EnumMember(Value = "Sunstroke")]
+            Sunstroke,
             [EnumMember(Value = "Snake Prairie")]
             SnakePrairie
         };
