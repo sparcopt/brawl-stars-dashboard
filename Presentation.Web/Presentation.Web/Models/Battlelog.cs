@@ -8,13 +8,15 @@ namespace Presentation.Web.Models
     {
         public List<Item> Items { get; set; }
         public Paging Paging { get; set; }           
-        public enum Mode { BrawlBall, Bounty, DuoShowdown, GemGrab, Heist, Siege };
+        public enum Mode { BrawlBall, Bounty, DuoShowdown, GemGrab, Heist, Siege, SoloShowdown };
         public enum Result { Defeat, Draw, Victory };
         public enum TypeEnum { Ranked };
         public enum Map
         {
             [EnumMember(Value = "Beach Ball")]
             BeachBall,
+            [EnumMember(Value = "Cavern Churn")]
+            CavernChurn,
             [EnumMember(Value = "Feast or Famine")]
             FeastOrFamine,
             [EnumMember(Value = "Four Squared")]
@@ -25,6 +27,8 @@ namespace Presentation.Web.Models
             JunkPark,
             [EnumMember(Value = "Minecart Madness")]
             MinecartMadness,
+            [EnumMember(Value = "Pit Stop")]
+            PitStop,
             [EnumMember(Value = "Thousand Lakes")]
             ThousandLakes,
             [EnumMember(Value = "Sandy Gems")]

@@ -40,7 +40,9 @@ namespace Presentation.Web.Controllers
             var model = new HomeModel
             {
                 Club = club,
-                BattleLogItems = battles.OrderByDescending(b => b.BattleTime).Take(4)
+                BattleLogItems = battles
+                    .Where(b => b.Battle.Mode == Battlelog.Mode.GemGrab)
+                    .OrderByDescending(b => b.BattleTime).Take(4)
             };
 
             return View(model);
