@@ -17,6 +17,8 @@ namespace Presentation.Web.Models
             BeachBall,
             [EnumMember(Value = "Cavern Churn")]
             CavernChurn,
+            [EnumMember(Value = "Deathcap Cave")]
+            DeathcapCave,
             [EnumMember(Value = "Feast or Famine")]
             FeastOrFamine,
             [EnumMember(Value = "Four Squared")]
