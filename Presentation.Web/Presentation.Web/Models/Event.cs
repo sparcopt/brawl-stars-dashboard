@@ -6,6 +6,6 @@ namespace Presentation.Web.Models
     {
         public long Id { get; set; }
         public Mode Mode { get; set; }
-        public Map Map { get; set; }
+        public string Map { get; set; }
     }
 }
