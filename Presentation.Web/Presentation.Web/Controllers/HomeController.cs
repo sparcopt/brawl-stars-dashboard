@@ -27,7 +27,7 @@ namespace Presentation.Web.Controllers
             var club = await GetClubAsync("PJP8LOJV");
             //var battlelog = await GetPlayerBattlelog("9QQJJGQYQ");
 
-            var playerTags = new string[] { "9QQJJGQYQ", "9YLQ02RY2", "922V0UP9R", "9982GULG2", "P8C90QC99", "P8VJC8UUR" };
+            var playerTags = new string[] { "9QQJJGQYQ", "9YLQ02RY2", "922V0UP9R", "9982GULG2", "P8C90QC99", "P8VJC8UUR", "2C8VLPYJQ", "9QJ9YLPUU" };
 
             var battles = new List<Item>();
 
