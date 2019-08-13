@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Data.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Presentation.Web
 {
@@ -17,7 +19,12 @@ namespace Presentation.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient();
+            services.AddHttpClient<IBrawlStarsService, BrawlStarsService>(client =>
+            {
+                client.BaseAddress = new Uri(Configuration["BrawlStarsApiUrl"]);
+                client.DefaultRequestHeaders.Add("Authorization", Configuration["AccessToken"]);
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
