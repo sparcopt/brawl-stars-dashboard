@@ -18,7 +18,7 @@ namespace Data.Services.Model
         public long RequiredTrophies { get; set; }
         public string Description { get; set; }
         public string Role { get; set; }
-        public List<Member> Members { get; set; }
+        public IEnumerable<Member> Members { get; set; }
     }
 
     public class Member

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Data.Services.Model;
+using System.Collections.Generic;
 
 namespace Presentation.Web.Models
 {
