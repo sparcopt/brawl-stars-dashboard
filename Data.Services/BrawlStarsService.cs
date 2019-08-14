@@ -1,4 +1,5 @@
 ﻿using Data.Services.Model;
+using Data.Services.Serialization;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -29,14 +30,7 @@ namespace Data.Services
         public async Task<Battlelog> GetPlayerBattlelog(string playerTag)
         {
             var response = await httpClient.GetStringAsync($"player/battlelog?tag={playerTag}");
-
-            var set = new JsonSerializerSettings // move this
-            {
-                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
-                DateFormatString = "yyyyMMddTHHmmss.fffZ",
-            };
-
-            return JsonConvert.DeserializeObject<Battlelog>(response, set);
+            return JsonConvert.DeserializeObject<Battlelog>(response, SerializerSettings.JsonSerializerSettings);
         }
     }
 }
