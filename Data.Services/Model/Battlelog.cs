@@ -9,6 +9,7 @@ namespace Data.Services.Model
         public Paging Paging { get; set; }           
         public enum Mode
         {
+            BigGame,
             BrawlBall,
             Bounty,
             DuoShowdown,
