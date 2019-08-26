@@ -10,6 +10,7 @@ namespace Data.Services.Model
         public enum Mode
         {
             BigGame,
+            BossFight,
             BrawlBall,
             Bounty,
             DuoShowdown,
