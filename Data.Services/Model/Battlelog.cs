@@ -6,7 +6,9 @@ namespace Data.Services.Model
     public class Battlelog
     {
         public List<Item> Items { get; set; }
-        public Paging Paging { get; set; }           
+
+        public Paging Paging { get; set; }       
+        
         public enum Mode
         {
             BigGame,
@@ -19,10 +21,20 @@ namespace Data.Services.Model
             RoboRumble,
             Siege,
             SoloShowdown
-        };
+        }
 
-        public enum Result { Defeat, Draw, Victory };
-        public enum TypeEnum { Ranked };
+        public enum Result
+        {
+            Defeat,
+            Draw,
+            Victory
+        }
+
+        public enum TypeEnum
+        {
+            Friendly,
+            Ranked
+        }
     }
 
     public class Paging
