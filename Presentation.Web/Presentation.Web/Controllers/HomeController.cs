@@ -27,12 +27,11 @@ namespace Presentation.Web.Controllers
 
             var battles = new List<Item>();
 
-            // Disabled battlelog because the brawl starts endpoint is not working
-            //foreach (var player in club.Members)
-            //{
-            //    var playerBattlelog = await brawlStarsService.GetPlayerBattlelog(player.Tag);
-            //    battles.AddRange(playerBattlelog.Items);
-            //}
+            foreach (var player in club.Members)
+            {
+                var playerBattlelog = await brawlStarsService.GetPlayerBattlelog(player.Tag);
+                battles.AddRange(playerBattlelog.Items);
+            }
 
             var model = new HomeModel
             {
