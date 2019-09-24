@@ -18,9 +18,11 @@ namespace Data.Services.Model
             DuoShowdown,
             GemGrab,
             Heist,
+            LoneStar,
             RoboRumble,
             Siege,
-            SoloShowdown
+            SoloShowdown,
+            Takedown
         }
 
         public enum Result
